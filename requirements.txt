@@ -1,0 +1,5 @@
+faker
+numpy
+pandas
+apache-airflow
+boto3

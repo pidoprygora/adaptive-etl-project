@@ -1,0 +1,16 @@
+project_name           = "adaptive-etl-airflow"
+aws_region             = "eu-north-1"
+instance_type          = "m7i.xlarge"
+root_volume_size_gb    = 60
+allowed_cidr           = ["0.0.0.0/0"]
+public_key_path        = "~/.ssh/id_rsa.pub"
+cluster_name           = "airflow"
+airflow_version        = "1.15.0"
+airflow_image_tag      = "2.10.4"
+executor               = "LocalExecutor"
+airflow_admin_password = "change-me-strong-password"
+spark_version          = "3.5.1"
+s3_bucket              = "adaptive-etl-project-032896316649-eu-north-1-an"
+athena_output_location = "s3://adaptive-etl-project-032896316649-eu-north-1-an/athena-results/"
+cloudwatch_namespace   = "AdaptiveETL/Host"
+cloudwatch_metrics_interval_sec = 60

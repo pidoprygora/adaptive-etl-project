@@ -1,0 +1,21 @@
+.DS_Store
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.env
+
+# Generated data and outputs
+data/
+output/
+project/data/
+*.csv
+*.parquet
+*.log
+
+# Terraform local cache
+project/infra/terraform/.terraform/
+
+# Non-code local artifacts
+*.numbers

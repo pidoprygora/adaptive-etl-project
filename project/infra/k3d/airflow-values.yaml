@@ -1,0 +1,129 @@
+# Test-profile values for Apache Airflow on k3d (single EC2 host).
+# Tuned for smaller nodes like t3.large.
+
+executor: LocalExecutor
+
+config:
+  AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+  AIRFLOW__LOGGING__REMOTE_LOGGING: "True"
+  AIRFLOW__LOGGING__REMOTE_LOG_CONN_ID: "aws_default"
+  AIRFLOW__LOGGING__REMOTE_BASE_LOG_FOLDER: "__AIRFLOW_REMOTE_BASE_LOG_URI__"
+  AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: "30"
+  AIRFLOW__SCHEDULER__MIN_FILE_PROCESS_INTERVAL: "10"
+  AIRFLOW__SCHEDULER__PARSING_PROCESSES: "2"
+  AIRFLOW__SCHEDULER__FILE_PARSING_SORT_MODE: "modified_time"
+  AIRFLOW__METRICS__STATSD_ON: "True"
+  AIRFLOW__METRICS__STATSD_HOST: "__AIRFLOW_STATSD_HOST__"
+  AIRFLOW__METRICS__STATSD_PORT: "9125"
+  AIRFLOW__METRICS__STATSD_PREFIX: "airflow"
+
+images:
+  airflow:
+    repository: apache/airflow
+    tag: "2.9.3"
+    pullPolicy: IfNotPresent
+
+fernetKey: "__AIRFLOW_FERNET_KEY__"
+webserverSecretKey: "__AIRFLOW_WEBSERVER_SECRET_KEY__"
+
+env:
+  - name: AIRFLOW_CONN_AWS_DEFAULT
+    value: "aws://?region_name=eu-north-1"
+  - name: AWS_DEFAULT_REGION
+    value: "eu-north-1"
+  - name: AWS_ACCESS_KEY_ID
+    value: "__AWS_ACCESS_KEY_ID__"
+  - name: AWS_SECRET_ACCESS_KEY
+    value: "__AWS_SECRET_ACCESS_KEY__"
+  - name: AWS_SESSION_TOKEN
+    value: "__AWS_SESSION_TOKEN__"
+  - name: AWS_EC2_METADATA_DISABLED
+    value: "false"
+  - name: AWS_METADATA_SERVICE_TIMEOUT
+    value: "5"
+  - name: AWS_METADATA_SERVICE_NUM_ATTEMPTS
+    value: "3"
+  - name: AIRFLOW_ALERT_WEBHOOK_URL
+    value: "__AIRFLOW_ALERT_WEBHOOK_URL__"
+  - name: AIRFLOW_ALERT_EMAIL_TO
+    value: "__AIRFLOW_ALERT_EMAIL_TO__"
+
+statsd:
+  enabled: true
+  service:
+    annotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "9102"
+
+postgresql:
+  enabled: true
+  auth:
+    username: airflow
+    password: airflow
+    database: airflow
+  primary:
+    resources:
+      requests:
+        cpu: 200m
+        memory: 512Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi
+
+redis:
+  enabled: false
+
+scheduler:
+  replicas: 1
+  resources:
+    requests:
+      cpu: 1000m
+      memory: 2Gi
+    limits:
+      cpu: 2500m
+      memory: 6Gi
+  startupProbe:
+    initialDelaySeconds: 60
+    periodSeconds: 60
+    timeoutSeconds: 60
+    failureThreshold: 60
+  livenessProbe:
+    initialDelaySeconds: 3600
+    periodSeconds: 60
+    timeoutSeconds: 60
+    failureThreshold: 6
+
+webserver:
+  replicas: 1
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 200m
+      memory: 600Mi
+    limits:
+      cpu: 700m
+      memory: 1200Mi
+
+workers:
+  enabled: false
+
+triggerer:
+  enabled: false
+
+flower:
+  enabled: false
+
+dags:
+  persistence:
+    enabled: false
+
+logs:
+  persistence:
+    enabled: false
+
+createUserJob:
+  useHelmHooks: false
+
+migrateDatabaseJob:
+  useHelmHooks: false

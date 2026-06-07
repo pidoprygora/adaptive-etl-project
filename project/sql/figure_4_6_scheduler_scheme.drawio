@@ -1,0 +1,92 @@
+<mxfile host="app.diagrams.net" modified="2026-06-01T14:36:00.000Z" agent="GPT-5.4" version="24.7.17" editor="www.draw.io">
+  <diagram id="figure-4-6" name="Figure 4.6 Scheduler Workflow">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1450" pageHeight="820" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="Рисунок 4.6. Схема роботи адаптивного планувальника" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="18" width="700" height="28" as="geometry" />
+        </mxCell>
+
+        <mxCell id="b1" value="&lt;b&gt;Профілі задач&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Описують обсяг даних,&lt;br/&gt;складність перетворень,&lt;br/&gt;послідовний час і частку&lt;br/&gt;паралелізації" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#ffffff;strokeColor=#000000;fontSize=13;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="30" y="120" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="b2" value="&lt;b&gt;Оцінювання навантаження&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Обчислюється показник&lt;br/&gt;навантаження для кожної&lt;br/&gt;задачі та середнє&lt;br/&gt;навантаження DAG" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#ffffff;strokeColor=#000000;fontSize=13;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="265" y="120" width="190" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="b3" value="&lt;b&gt;Рекомендація паралелізму&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Визначається рекомендована&lt;br/&gt;кількість виконавців для&lt;br/&gt;кожної задачі" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#ffffff;strokeColor=#000000;fontSize=13;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="510" y="120" width="190" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="b4" value="&lt;b&gt;Адаптація ресурсів&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Коригуються executors,&lt;br/&gt;shuffle partitions і&lt;br/&gt;прогнозований час виконання" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#ffffff;strokeColor=#000000;fontSize=13;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="755" y="120" width="190" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="b5" value="&lt;b&gt;Передача через XCom&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Параметри плану передаються&lt;br/&gt;в Airflow-задачі для&lt;br/&gt;подальшого запуску" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#ffffff;strokeColor=#000000;fontSize=13;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="120" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="b6" value="&lt;b&gt;Виконання PySpark&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;PySpark job запускається&lt;br/&gt;з адаптованими ресурсними&lt;br/&gt;параметрами" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#ffffff;strokeColor=#000000;fontSize=13;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="350" width="180" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="b7" value="&lt;b&gt;Метрики виконання&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Фіксуються фактичний час,&lt;br/&gt;використання CPU / RAM,&lt;br/&gt;баланс і швидкодія" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#ffffff;strokeColor=#000000;fontSize=13;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="720" y="350" width="190" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="b8" value="&lt;b&gt;Оновлення прогнозу&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Історія виконань оновлюється,&lt;br/&gt;щоб уточнити наступні&lt;br/&gt;оцінки планувальника" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#ffffff;strokeColor=#000000;fontSize=13;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="440" y="350" width="190" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="label_top" value="Основний етап планування" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="90" width="220" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="label_bottom" value="Контур зворотного зв'язку" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="320" width="220" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=8 8;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="b1" target="b2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=8 8;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="b2" target="b3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=8 8;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="b3" target="b4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=8 8;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="b4" target="b5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=8 8;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="b5" target="b6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1090" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=8 8;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="b6" target="b7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=8 8;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="b7" target="b8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=8 8;strokeWidth=2;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="b8" target="b2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="355" y="405" />
+              <mxPoint x="355" y="285" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="note" value="Планувальник використовує накопичені метрики попередніх запусків для уточнення наступних рекомендацій паралелізму." style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#ffffff;strokeColor=#000000;fontSize=11;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="30" y="560" width="560" height="52" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

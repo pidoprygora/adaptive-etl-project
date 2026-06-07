@@ -1,0 +1,53 @@
+{
+  "agent": {
+    "metrics_collection_interval": ${cloudwatch_interval},
+    "run_as_user": "root"
+  },
+  "metrics": {
+    "namespace": "${cloudwatch_namespace}",
+    "append_dimensions": {
+      "InstanceId": "$${aws:InstanceId}"
+    },
+    "metrics_collected": {
+      "cpu": {
+        "resources": [
+          "*"
+        ],
+        "measurement": [
+          "cpu_usage_active"
+        ],
+        "totalcpu": true,
+        "metrics_collection_interval": ${cloudwatch_interval}
+      },
+      "mem": {
+        "measurement": [
+          "mem_used_percent"
+        ],
+        "metrics_collection_interval": ${cloudwatch_interval}
+      },
+      "disk": {
+        "resources": [
+          "/"
+        ],
+        "measurement": [
+          "used_percent"
+        ],
+        "metrics_collection_interval": ${cloudwatch_interval}
+      }
+    }
+  },
+  "logs": {
+    "logs_collected": {
+      "files": {
+        "collect_list": [
+          {
+            "file_path": "/var/log/user-data.log",
+            "log_group_name": "/adaptive-etl/ec2/bootstrap",
+            "log_stream_name": "{instance_id}",
+            "retention_in_days": 14
+          }
+        ]
+      }
+    }
+  }
+}

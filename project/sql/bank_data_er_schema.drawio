@@ -1,0 +1,133 @@
+<mxfile host="app.diagrams.net" modified="2026-05-26T20:25:00.000Z" agent="Codex" version="24.7.17" editor="www.draw.io">
+  <diagram id="bank-er-diagram" name="Bank ER Schema">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="clients" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border-bottom:1px solid #000;padding:0 0 4px 0;&quot;&gt;&lt;b&gt;clients&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding-top:4px;&quot;&gt;PK client_id [BIGINT]&lt;br/&gt;person_code [STRING]&lt;br/&gt;full_name [STRING]&lt;br/&gt;birth_date [DATE]&lt;br/&gt;gender [STRING]&lt;br/&gt;city [STRING]&lt;br/&gt;region [STRING]&lt;br/&gt;registration_date [DATE]&lt;br/&gt;is_active [BOOLEAN]&lt;br/&gt;created_at [TIMESTAMP]&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="250" height="190" as="geometry" />
+        </mxCell>
+
+        <mxCell id="client_contacts" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border-bottom:1px solid #000;padding:0 0 4px 0;&quot;&gt;&lt;b&gt;client_contacts&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding-top:4px;&quot;&gt;PK contact_id [BIGINT]&lt;br/&gt;FK client_id [BIGINT]&lt;br/&gt;phone [STRING]&lt;br/&gt;email [STRING]&lt;br/&gt;viber_id [STRING]&lt;br/&gt;push_token [STRING]&lt;br/&gt;preferred_channel [STRING]&lt;br/&gt;is_verified [BOOLEAN]&lt;br/&gt;updated_at [TIMESTAMP]&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="20" y="230" width="250" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="client_segments" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border-bottom:1px solid #000;padding:0 0 4px 0;&quot;&gt;&lt;b&gt;client_segments&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding-top:4px;&quot;&gt;PK segment_id [BIGINT]&lt;br/&gt;FK client_id [BIGINT]&lt;br/&gt;segment_name [STRING]&lt;br/&gt;segment_score [DOUBLE]&lt;br/&gt;income_group [STRING]&lt;br/&gt;risk_level [STRING]&lt;br/&gt;updated_at [TIMESTAMP]&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="20" y="430" width="250" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="etl_execution_metrics" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border-bottom:1px solid #000;padding:0 0 4px 0;&quot;&gt;&lt;b&gt;etl_execution_metrics&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding-top:4px;&quot;&gt;PK metric_id [BIGINT]&lt;br/&gt;dag_run_id [STRING]&lt;br/&gt;execution_date [TIMESTAMP]&lt;br/&gt;dataset_size [STRING]&lt;br/&gt;rows_clients [BIGINT]&lt;br/&gt;rows_transactions [BIGINT]&lt;br/&gt;rows_clickstream [BIGINT]&lt;br/&gt;rows_offers [BIGINT]&lt;br/&gt;rows_client_offers [BIGINT]&lt;br/&gt;extract_time_sec [DOUBLE]&lt;br/&gt;transform_time_sec [DOUBLE]&lt;br/&gt;load_time_sec [DOUBLE]&lt;br/&gt;total_execution_time_sec [DOUBLE]&lt;br/&gt;parallel_tasks_count [INT]&lt;br/&gt;status [STRING]&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="20" y="600" width="300" height="260" as="geometry" />
+        </mxCell>
+
+        <mxCell id="client_products" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border-bottom:1px solid #000;padding:0 0 4px 0;&quot;&gt;&lt;b&gt;client_products&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding-top:4px;&quot;&gt;PK client_product_id [BIGINT]&lt;br/&gt;FK client_id [BIGINT]&lt;br/&gt;FK product_id [BIGINT]&lt;br/&gt;open_date [DATE]&lt;br/&gt;close_date [DATE]&lt;br/&gt;status [STRING]&lt;br/&gt;balance [DOUBLE]&lt;br/&gt;credit_limit [DOUBLE]&lt;br/&gt;last_activity_date [DATE]&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="300" y="20" width="260" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="transactions" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border-bottom:1px solid #000;padding:0 0 4px 0;&quot;&gt;&lt;b&gt;transactions&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding-top:4px;&quot;&gt;PK transaction_id [BIGINT]&lt;br/&gt;FK client_product_id [BIGINT]&lt;br/&gt;transaction_date [TIMESTAMP]&lt;br/&gt;transaction_type [STRING]&lt;br/&gt;merchant_category [STRING]&lt;br/&gt;amount [DOUBLE]&lt;br/&gt;currency [STRING]&lt;br/&gt;city [STRING]&lt;br/&gt;status [STRING]&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="300" y="220" width="260" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="app_clickstream" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border-bottom:1px solid #000;padding:0 0 4px 0;&quot;&gt;&lt;b&gt;app_clickstream&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding-top:4px;&quot;&gt;PK app_event_id [BIGINT]&lt;br/&gt;FK client_id [BIGINT]&lt;br/&gt;event_time [TIMESTAMP]&lt;br/&gt;screen_name [STRING]&lt;br/&gt;action_name [STRING]&lt;br/&gt;FK product_id [BIGINT]&lt;br/&gt;session_id [STRING]&lt;br/&gt;device_type [STRING]&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="300" y="420" width="260" height="170" as="geometry" />
+        </mxCell>
+
+        <mxCell id="products" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border-bottom:1px solid #000;padding:0 0 4px 0;&quot;&gt;&lt;b&gt;products&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding-top:4px;&quot;&gt;PK product_id [BIGINT]&lt;br/&gt;product_name [STRING]&lt;br/&gt;product_type [STRING]&lt;br/&gt;product_category [STRING]&lt;br/&gt;is_active [BOOLEAN]&lt;br/&gt;created_at [TIMESTAMP]&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="20" width="250" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="offers" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border-bottom:1px solid #000;padding:0 0 4px 0;&quot;&gt;&lt;b&gt;offers&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding-top:4px;&quot;&gt;PK offer_id [BIGINT]&lt;br/&gt;FK product_id [BIGINT]&lt;br/&gt;offer_name [STRING]&lt;br/&gt;offer_description [STRING]&lt;br/&gt;interest_rate [DOUBLE]&lt;br/&gt;limit_amount [DOUBLE]&lt;br/&gt;min_income [DOUBLE]&lt;br/&gt;is_active [BOOLEAN]&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="190" width="250" height="170" as="geometry" />
+        </mxCell>
+
+        <mxCell id="client_offers" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border-bottom:1px solid #000;padding:0 0 4px 0;&quot;&gt;&lt;b&gt;client_offers&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding-top:4px;&quot;&gt;PK client_offer_id [BIGINT]&lt;br/&gt;FK client_id [BIGINT]&lt;br/&gt;FK offer_id [BIGINT]&lt;br/&gt;FK campaign_id [BIGINT]&lt;br/&gt;assigned_date [DATE]&lt;br/&gt;score [DOUBLE]&lt;br/&gt;offer_status [STRING]&lt;br/&gt;channel [STRING]&lt;br/&gt;sent_at [TIMESTAMP]&lt;br/&gt;valid_until [DATE]&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="380" width="250" height="210" as="geometry" />
+        </mxCell>
+
+        <mxCell id="delivery_statuses" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border-bottom:1px solid #000;padding:0 0 4px 0;&quot;&gt;&lt;b&gt;delivery_statuses&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding-top:4px;&quot;&gt;PK delivery_status_id [BIGINT]&lt;br/&gt;status_name [STRING]&lt;br/&gt;status_description [STRING]&lt;br/&gt;is_success [BOOLEAN]&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="610" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="campaigns" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border-bottom:1px solid #000;padding:0 0 4px 0;&quot;&gt;&lt;b&gt;campaigns&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding-top:4px;&quot;&gt;PK campaign_id [BIGINT]&lt;br/&gt;campaign_name [STRING]&lt;br/&gt;campaign_type [STRING]&lt;br/&gt;start_date [DATE]&lt;br/&gt;end_date [DATE]&lt;br/&gt;status [STRING]&lt;br/&gt;created_at [TIMESTAMP]&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="870" y="20" width="250" height="160" as="geometry" />
+        </mxCell>
+
+        <mxCell id="campaign_offers" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border-bottom:1px solid #000;padding:0 0 4px 0;&quot;&gt;&lt;b&gt;campaign_offers&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding-top:4px;&quot;&gt;PK campaign_offer_id [BIGINT]&lt;br/&gt;FK campaign_id [BIGINT]&lt;br/&gt;FK offer_id [BIGINT]&lt;br/&gt;priority [INT]&lt;br/&gt;created_at [TIMESTAMP]&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="870" y="200" width="250" height="140" as="geometry" />
+        </mxCell>
+
+        <mxCell id="mailing_audience" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border-bottom:1px solid #000;padding:0 0 4px 0;&quot;&gt;&lt;b&gt;mailing_audience&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding-top:4px;&quot;&gt;PK audience_id [BIGINT]&lt;br/&gt;FK client_id [BIGINT]&lt;br/&gt;FK campaign_id [BIGINT]&lt;br/&gt;FK offer_id [BIGINT]&lt;br/&gt;segment_name [STRING]&lt;br/&gt;propensity_score [DOUBLE]&lt;br/&gt;recommended_channel [STRING]&lt;br/&gt;planned_send_date [DATE]&lt;br/&gt;is_eligible [BOOLEAN]&lt;br/&gt;exclusion_reason [STRING]&lt;br/&gt;created_at [TIMESTAMP]&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="870" y="360" width="250" height="230" as="geometry" />
+        </mxCell>
+
+        <mxCell id="mailing_events" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;border-bottom:1px solid #000;padding:0 0 4px 0;&quot;&gt;&lt;b&gt;mailing_events&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding-top:4px;&quot;&gt;PK event_id [BIGINT]&lt;br/&gt;FK client_offer_id [BIGINT]&lt;br/&gt;event_type [STRING]&lt;br/&gt;event_time [TIMESTAMP]&lt;br/&gt;FK delivery_status_id [BIGINT]&lt;br/&gt;error_code [STRING]&lt;br/&gt;error_message [STRING]&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="870" y="610" width="250" height="170" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_clients_contacts" value="has" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;" edge="1" parent="1" source="clients" target="client_contacts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_clients_segments" value="has" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;" edge="1" parent="1" source="clients" target="client_segments">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_clients_client_products" value="owns" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;exitX=1;exitY=0.30;entryX=0;entryY=0.30;" edge="1" parent="1" source="clients" target="client_products">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_products_client_products" value="assigned" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;exitX=0;exitY=0.40;entryX=1;entryY=0.40;" edge="1" parent="1" source="products" target="client_products">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_client_products_transactions" value="generates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;" edge="1" parent="1" source="client_products" target="transactions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_products_offers" value="base_for" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;" edge="1" parent="1" source="products" target="offers">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_campaigns_campaign_offers" value="contains" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;" edge="1" parent="1" source="campaigns" target="campaign_offers">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_offers_campaign_offers" value="linked" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;exitX=1;exitY=0.55;entryX=0;entryY=0.55;" edge="1" parent="1" source="offers" target="campaign_offers">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_clients_mailing_audience" value="candidate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;exitX=1;exitY=0.15;entryX=0;entryY=0.25;" edge="1" parent="1" source="clients" target="mailing_audience">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_campaigns_mailing_audience" value="for_campaign" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;exitX=0.55;exitY=1;entryX=0.85;entryY=0;" edge="1" parent="1" source="campaigns" target="mailing_audience">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1060" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_offers_mailing_audience" value="for_offer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;exitX=1;exitY=0.75;entryX=0;entryY=0.55;" edge="1" parent="1" source="offers" target="mailing_audience">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_clients_client_offers" value="receives" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;exitX=1;exitY=0.45;entryX=0;entryY=0.20;" edge="1" parent="1" source="clients" target="client_offers">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_campaigns_client_offers" value="origin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;exitX=0.15;exitY=1;entryX=1;entryY=0.45;" edge="1" parent="1" source="campaigns" target="client_offers">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="860" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_offers_client_offers" value="contains" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="offers" target="client_offers">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_client_offers_mailing_events" value="tracked_by" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;exitX=1;exitY=0.85;entryX=0;entryY=0.30;" edge="1" parent="1" source="client_offers" target="mailing_events">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_delivery_statuses_mailing_events" value="status_of" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;exitX=1;exitY=0.50;entryX=0;entryY=0.60;" edge="1" parent="1" source="delivery_statuses" target="mailing_events">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_clients_app_clickstream" value="performs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;exitX=1;exitY=0.65;entryX=0;entryY=0.45;" edge="1" parent="1" source="clients" target="app_clickstream">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_products_app_clickstream" value="context_product" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=20;html=1;endArrow=block;endFill=1;strokeColor=#555555;exitX=0;exitY=0.85;entryX=1;entryY=0.55;" edge="1" parent="1" source="products" target="app_clickstream">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
